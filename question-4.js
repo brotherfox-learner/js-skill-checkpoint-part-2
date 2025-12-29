@@ -1,40 +1,50 @@
 const alphaTech = [
-    { name: 'Alice', age: 23, department: 'Engineering' },
-    { name: 'Bob', age: 19, department: 'Design' }
-  ];
-  
-  const betaSoft = [
-    { name: 'Charlie', age: 28, department: 'Engineering' },
-    { name: 'David', age: 17, department: 'Support' }
-  ];
-  
-  const gammaDev = [
-    { name: 'Eve', age: 25, department: 'Marketing' },
-    { name: 'Faythe', age: 18, department: 'Engineering' },
-    { name: 'Grace', age: 20, department: 'Engineering' }
-  ];
-  
+  { name: "Alice", age: 23, department: "Engineering" },
+  { name: "Bob", age: 19, department: "Design" },
+];
 
-const alphaTechWithCompany = alphaTech.map(employee => ({
+const betaSoft = [
+  { name: "Charlie", age: 28, department: "Engineering" },
+  { name: "David", age: 17, department: "Support" },
+];
+
+const gammaDev = [
+  { name: "Eve", age: 25, department: "Marketing" },
+  { name: "Faythe", age: 18, department: "Engineering" },
+  { name: "Grace", age: 20, department: "Engineering" },
+];
+
+const alphaTechWithCompany = alphaTech.map((employee) => ({
   ...employee,
-  company: "alphaTech"
+  company: "alphaTech",
 }));
 
-const betaSoftWithCompany = betaSoft.map(employee => ({
+const betaSoftWithCompany = betaSoft.map((employee) => ({
   ...employee,
-  company: "betaSoft"
+  company: "betaSoft",
 }));
 
-const allEmployees = [...alphaTechWithCompany, ...betaSoftWithCompany];
+const gammaDevwithCompany = gammaDev.map((employee) => ({
+  ...employee,
+  company: "gammaDev",
+}));
 
-const result = allEmployees.filter((employee) => {
-  return employee.department === 'Enginring' && employee.age >= 20;
-}).map((employee) => {
-  return {
-    name: employee.name,
-    company: '' 
-  };
-});
+const allEmployees = [
+  ...alphaTechWithCompany,
+  ...betaSoftWithCompany,
+  ...gammaDevwithCompany,
+];
+
+const result = allEmployees
+  .filter((employee) => {
+    return employee.department === "Engineering" && employee.age >= 20;
+  })
+  .map((employee) => {
+    return {
+      name: employee.name,
+      company: employee.company,
+    };
+  });
 
 console.log(result);
 // [
@@ -42,5 +52,3 @@ console.log(result);
 //     { name: 'Charlie', company: 'betaSoft' },
 //     { name: 'Grace', company: 'gammaDev' }
 // ]
-  
-
